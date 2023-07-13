@@ -1,0 +1,26 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# 데이터 정의
+drug_type = ['cocaine', 'heroine', 'opium', 'methamphetamine']
+carbon_footprint_mean = [157.21, 69.18, 69.18, 86.12]
+
+# 그래프 생성
+fig, ax = plt.subplots(figsize=(10, 6))
+
+# 막대 그래프 생성
+bar = ax.bar(drug_type, carbon_footprint_mean)
+
+# 레이블 설정
+ax.set_xlabel('Drug Type')
+ax.set_ylabel('Mean Carbon Footprint(kg)')
+ax.set_title('Mean Carbon Footprint by Drug Type')
+
+# 막대 그래프 위에 값을 표시
+for rect in bar:
+    height = rect.get_height()
+    ax.annotate(f'{height:.2f}', xy=(rect.get_x() + rect.get_width() / 2, height), xytext=(0, 3),
+                textcoords="offset points", ha='center', va='bottom')
+
+# 그래프 출력
+plt.show()
